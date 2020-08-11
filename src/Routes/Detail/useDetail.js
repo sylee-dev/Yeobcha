@@ -193,31 +193,34 @@ const useDetail = (props) => {
             </Item>
             {state.result &&
             state.result.production_countries &&
-            state.result.production_countries.length > 0
-              ? state.result.production_countries.map((t) => (
-                  <>
-                    <Divider>•</Divider>
-                    <Item>
-                      <img
-                        src={`https://www.countryflags.io/${t.iso_3166_1}/flat/24.png`}
-                      />
-                    </Item>
-                  </>
-                ))
-              : state.result &&
-                state.result.origin_country &&
-                state.result.origin_country.length > 0
-              ? state.result.origin_country.map((t) => (
-                  <>
-                    <Divider>•</Divider>
-                    <Item>
-                      <img
-                        src={`https://www.countryflags.io/${t}/flat/24.png`}
-                      />
-                    </Item>
-                  </>
-                ))
-              : "Unknown country"}
+            state.result.production_countries.length > 0 ? (
+              state.result.production_countries.map((t) => (
+                <>
+                  <Divider>•</Divider>
+                  <Item>
+                    <img
+                      src={`https://www.countryflags.io/${t.iso_3166_1}/flat/24.png`}
+                    />
+                  </Item>
+                </>
+              ))
+            ) : state.result &&
+              state.result.origin_country &&
+              state.result.origin_country.length > 0 ? (
+              state.result.origin_country.map((t) => (
+                <>
+                  <Divider>•</Divider>
+                  <Item>
+                    <img src={`https://www.countryflags.io/${t}/flat/24.png`} />
+                  </Item>
+                </>
+              ))
+            ) : (
+              <>
+                <Divider>•</Divider>
+                <Item>Unknown country</Item>
+              </>
+            )}
           </ItemContainer>
           <Overview>{state.result.overview}</Overview>
           <Tab state={state} isMovie={state.isMovie} />
