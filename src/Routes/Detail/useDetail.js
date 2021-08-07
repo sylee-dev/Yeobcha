@@ -173,7 +173,9 @@ const useDetail = (props) => {
             <Item>
               {state.result.release_date
                 ? state.result.release_date.substring(0, 4)
-                : state.result.first_air_date.substring(0, 4)}
+                : state.result.first_air_date
+                ? state.result.first_air_date.substring(0, 4)
+                : ""}
             </Item>
             <Divider>•</Divider>
             <Item>

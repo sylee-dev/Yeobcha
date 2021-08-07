@@ -31,6 +31,17 @@ const useTV = () => {
       const {
         data: { results: airingToday },
       } = await tvApi.airingToday();
+
+      popular.map((e) => {
+        console.log(
+          e.id,
+          e.poster_path,
+          e.original_name,
+          e.vote_average,
+          e.first_air_date
+        );
+      });
+
       setState((state) => ({ ...state, topRated, popular, airingToday }));
     } catch {
       setState((state) => ({
@@ -63,7 +74,11 @@ const useTV = () => {
                   imageUrl={show.poster_path}
                   title={show.original_name}
                   rating={show.vote_average}
-                  year={show.first_air_date.substring(0, 4)}
+                  year={
+                    show.first_air_date
+                      ? show.first_air_date.substring(0, 4)
+                      : ""
+                  }
                 />
               ))}
             </Section>
@@ -77,7 +92,11 @@ const useTV = () => {
                   imageUrl={show.poster_path}
                   title={show.original_name}
                   rating={show.vote_average}
-                  year={show.first_air_date.substring(0, 4)}
+                  year={
+                    show.first_air_date
+                      ? show.first_air_date.substring(0, 4)
+                      : ""
+                  }
                 />
               ))}
             </Section>
@@ -91,7 +110,11 @@ const useTV = () => {
                   imageUrl={show.poster_path}
                   title={show.original_name}
                   rating={show.vote_average}
-                  year={show.first_air_date.substring(0, 4)}
+                  year={
+                    show.first_air_date
+                      ? show.first_air_date.substring(0, 4)
+                      : ""
+                  }
                 />
               ))}
             </Section>
